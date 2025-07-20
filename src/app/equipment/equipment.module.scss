@@ -1,0 +1,30 @@
+.equipmentWrapper {
+    min-height: 100vh;
+    margin: auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background: #fff;
+    border-radius: 12px;
+    color: black;
+}
+
+.addItem {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    input {
+        padding: 0.5rem;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+    }
+
+    button {
+        margin-top: 0.5rem;
+    }
+}

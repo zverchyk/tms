@@ -1,0 +1,37 @@
+.inventoryList {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 8px;
+
+
+    .header_section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .filter {
+            // make a pop up window for filter
+        }
+    }
+
+    .inventoryIcon {
+        width: 25px;
+        height: 25px;
+        margin: 10px;
+    }
+
+    .inventoryItem {
+        border-bottom: 1px solid #eee;
+        padding: 1rem 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+
+        .itemButtons {
+            display: flex;
+            gap: 0.5rem;
+        }
+    }
+}

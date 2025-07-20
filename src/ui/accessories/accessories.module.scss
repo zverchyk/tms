@@ -1,0 +1,15 @@
+.progressWrapper {
+    width: 100%;
+    height: 10px;
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background: #0070f3;
+    transition: width 0.3s ease;
+}
+
+.progressWindow {}

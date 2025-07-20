@@ -1,0 +1,25 @@
+.home_page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+
+  .main_btn {
+    display: flex;
+    text-decoration: none;
+    width: 300px;
+    height: 75px;
+    color: white;
+    background-color: rgb(57, 57, 70);
+    border-radius: 999px;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+
+    &:hover {
+      opacity: 0.9;
+
+    }
+  }
+}
