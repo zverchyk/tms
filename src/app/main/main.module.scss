@@ -82,3 +82,25 @@
 
 
 }
+
+.returnToMainButton {
+
+    padding: 20px;
+    position: fixed;
+    right: 50px;
+    bottom: 20px;
+    background-color: rgb(106, 102, 102);
+    opacity: 0.5;
+    color: white;
+    z-index: -1;
+    border-radius: 50%;
+
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.showReturnbtn {
+    z-index: 10;
+}

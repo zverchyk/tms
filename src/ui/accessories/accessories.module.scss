@@ -13,3 +13,14 @@
 }
 
 .progressWindow {}
+
+.backButton {
+    background-color: rgb(85, 79, 79);
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: large;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}

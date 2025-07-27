@@ -3,18 +3,18 @@ import Image from 'next/image';
 
 import styles from './inventoryTable.module.scss';
 
-import fetchFakeData from '@/lib/data';
+import { cache } from 'react'
+
+import { fetchFakeEquipment, uploadNewItem } from '@/lib/data';
 
 import { ProgressBar } from '../accessories/Accessories';
-import { useState } from 'react';
-type Props = {
-    query: string;
-}
-
-export function InventoryTable({ query }: Props) {
-    const equipmentData = fetchFakeData(query)
+import { EquipmentItem } from '../../lib/definitions';
 
 
+
+
+export default async function InventoryTable() {
+    const equipmentData = await fetchFakeEquipment()
 
     return (
         <div className={styles.inventoryList}>
@@ -35,6 +35,7 @@ export function InventoryTable({ query }: Props) {
             </div>
 
             {equipmentData.map((item, index) => (
+
                 <div key={index} className={styles.inventoryItem}>
                     <Image
                         src={diamond}
@@ -59,19 +60,3 @@ export function InventoryTable({ query }: Props) {
     )
 }
 
-export function AddItem() {
-    const [newItem, setNewItem] = useState({
-        name: '',
-        category: '',
-        brand: '',
-        date: '',
-        notes: '',
-        cost: 0,
-        quantity: 0
-    });
-
-    return (
-        <div className="i"></div>
-
-    )
-}

@@ -21,15 +21,22 @@ export default function Page() {
     const topRef = useRef<HTMLDivElement>(null);
     const bottomRef = useRef<HTMLDivElement>(null);
 
+
+
+    const sections = [topRef, middleRef, bottomRef];
+    const [currentIndex, setCurrentIndex] = useState(1); // Start at middle
+    const [showReturn, setShowReturn] = useState(false);
+
     // BTN method
     const jumpToSection = (section: any, behavior: string) => {
         section.current?.scrollIntoView({ behavior: behavior });
         section === topRef ? setCurrentIndex(0) : setCurrentIndex(2)
+
+
     };
 
     // SCROLL WIPER
-    const sections = [topRef, middleRef, bottomRef];
-    const [currentIndex, setCurrentIndex] = useState(1); // Start at middle
+
 
     // IT WAS LIKE THIS: const moveToSection = (section: React.RefObject<HTMLDivElement>, behavior: ScrollBehavior = 'smooth')
     // scroll method
@@ -46,9 +53,11 @@ export default function Page() {
 
         const handleWheel = (e: WheelEvent) => {
 
-            if (currentIndex === 2) return;
+            if (currentIndex === 2) return
 
 
+            if (currentIndex > 2) return;
+            console.log(currentIndex)
             if (e.deltaY > 0 && currentIndex < sections.length - 1) {
 
                 setCurrentIndex((prev) => prev + 1);
@@ -68,6 +77,25 @@ export default function Page() {
 
     }, [currentIndex]);
 
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setShowReturn(!entry.isIntersecting);
+            },
+            { threshold: 0.4 }
+        );
+
+        if (middleRef.current) {
+            observer.observe(middleRef.current);
+
+        }
+
+        return () => {
+            if (middleRef.current) {
+                observer.unobserve(middleRef.current);
+            }
+        };
+    }, []);
 
     return (
         <main className={styles.mainWrapper}>
@@ -89,6 +117,7 @@ export default function Page() {
             <section className={styles.section} ref={bottomRef}>
                 <Sessions></Sessions>
             </section>
+            <button className={`${styles.returnToMainButton} ${showReturn ? styles.showReturnbtn : ''}`} onClick={() => jumpToSection(middleRef, 'smooth')} >^</button>
 
         </main>
     )

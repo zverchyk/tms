@@ -17,3 +17,4 @@ export function ProgressBar({ progress }: { progress: number }) {
         </div>
     );
 }
+

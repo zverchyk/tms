@@ -49,18 +49,33 @@
     padding: 1rem;
     border-radius: 8px;
     background: #f9f9f9;
+    text-decoration: none;
+    justify-content: space-between;
+    color: rgb(38, 37, 37);
+
+    .sessionIconInfo {
+        display: flex;
+        flex-direction: row;
+    }
 
     .sessionIcon {
         font-size: 2rem;
+        text-decoration: none;
     }
 
-    h3 {
-        margin: 0;
+    .sessionInfoBlock {
+        justify-content: center;
+        align-items: center;
+
+        p {
+            justify-content: center;
+            align-items: center;
+        }
     }
 
-    p {
-        margin: 0.25rem 0;
-        font-size: 0.9rem;
+    .sessionDate {
+
+        text-decoration: none;
     }
 }
 
@@ -77,13 +92,21 @@
 
 .day_block {
     width: 30px;
-    height: 30px;
+    height: 10px;
     background-color: grey;
-    margin: 10px;
+    margin: 5px;
+
+    padding: 2px;
+    transition: height 0.3s ease;
+
+    &:hover {
+        height: 30px;
+    }
 }
 
 .days_between {
     display: flex;
     flex-direction: row;
+    font-size: 12px;
 
 }
