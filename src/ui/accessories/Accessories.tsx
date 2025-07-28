@@ -2,6 +2,8 @@
 
 import styles from './accessories.module.scss';
 
+import { BackButton } from './buttons';
+
 export function ProgressBar({ progress }: { progress: number }) {
     return (
         <div className={styles.progressWindow}>
@@ -18,3 +20,12 @@ export function ProgressBar({ progress }: { progress: number }) {
     );
 }
 
+export function Header({title}: {title?:string}){
+    return(
+        <div>
+        
+            <BackButton href='/main'></BackButton>
+            {title && <h1>{title}</h1>}
+        </div>
+    )
+}

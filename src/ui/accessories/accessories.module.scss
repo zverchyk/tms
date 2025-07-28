@@ -12,7 +12,9 @@
     transition: width 0.3s ease;
 }
 
-.progressWindow {}
+.progressWindow {
+    width:100vw;
+}
 
 .backButton {
     background-color: rgb(85, 79, 79);

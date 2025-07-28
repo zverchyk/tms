@@ -23,3 +23,11 @@ export type NewItem = {
     quantity?: number;
 
 }
+
+export type DialogInfo ={
+    name: string;
+    id:string;
+    lastMessage:string;
+    lastMessageDateAndTime: string;
+
+}

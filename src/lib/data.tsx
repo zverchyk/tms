@@ -1,6 +1,6 @@
 'use server'
 
-import { EquipmentItem, Session, NewItem } from '@/lib/definitions';
+import { EquipmentItem, Session, NewItem, DialogInfo} from '@/lib/definitions';
 
 
 const equipment = [
@@ -113,4 +113,64 @@ export async function uploadNewItem(prevState: State, formData: FormData): Promi
     return { message: 'Item added successfully' };
 
 
+}
+
+export async function loadAllDialogs():Promise<DialogInfo[]>{
+    const data = [
+  {
+    id: "638387djdh",
+    name: "jack",
+    lastMessage: "yo",
+    lastMessageDateAndTime: "28/05/2025#12:00:00",
+  },
+  {
+    id: "8237xkdke1",
+    name: "emma",
+    lastMessage: "see you soon",
+    lastMessageDateAndTime: "01/06/2025#09:30:00",
+  },
+  {
+    id: "9283dkej39", 
+    name: "liam",
+    lastMessage: "call me",
+    lastMessageDateAndTime: "15/06/2025#15:45:00",
+  },
+  {
+    id: "3278djd92k",
+    name: "olivia",
+    lastMessage: "done!",
+    lastMessageDateAndTime: "22/06/2025#10:00:00",
+  },
+  {
+    id: "1223jdhq83",
+    name: "noah",
+    lastMessage: "thanks",
+    lastMessageDateAndTime: "25/06/2025#18:20:00",
+  },
+  {
+    id: "7362djfk82",
+    name: "ava",
+    lastMessage: "almost ready",
+    lastMessageDateAndTime: "28/06/2025#11:10:00",
+  },
+  {
+    id: "5283dhqk93",
+    name: "william",
+    lastMessage: "sent it",
+    lastMessageDateAndTime: "01/07/2025#08:55:00",
+  },
+  {
+    id: "3728djhd03",
+    name: "sophia",
+    lastMessage: "sure!",
+    lastMessageDateAndTime: "04/07/2025#14:40:00",
+  },
+  {
+    id: "9283dhdk29",
+    name: "james",
+    lastMessage: "ok",
+    lastMessageDateAndTime: "07/07/2025#17:05:00",
+  },
+];
+return data
 }
