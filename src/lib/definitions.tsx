@@ -12,7 +12,7 @@ export type Session = {
     date: string;
     pic: string;
     id?: string;
-    days?: number;
+
 };
 
 export type NewItem = {

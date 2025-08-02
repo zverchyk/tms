@@ -10,7 +10,10 @@ export default function ControlPanel() {
         { icon: '👤', title: 'Account Info', link: '/account' },
         { icon: '💵', title: 'Money', link: '/money' },
         { icon: '🛠️', title: 'Equipment', link: '/equipment' },
-        { icon: '⚙️', title: 'Settings', link: '/settings' },]
+        { icon: '⚙️', title: 'Settings', link: '/settings' },
+        { icon: '💵', title: 'Messages', link: '/messages' },
+
+    ]
     const [cards, setCards] = useState(cardsInfo)
 
     return (
@@ -18,11 +21,11 @@ export default function ControlPanel() {
             <h2>Control Panel</h2>
             <div className={styles.grid}>
                 {cards.map((card, index) => (
-                    <Link href={card.link} key={index}>
-                        <div className={styles.card}>
-                            <div className={styles.icon}>{card.icon}</div>
-                            <span>{card.title}</span>
-                        </div>
+                    <Link href={card.link} key={index} className={styles.card}>
+
+                        <div className={styles.icon}>{card.icon}</div>
+                        <span>{card.title}</span>
+
                     </Link>
                 ))}
             </div>

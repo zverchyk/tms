@@ -36,61 +36,57 @@ export async function fetchFakeSessions(): Promise<Session[]> {
     const sessions = [
         {
             status: 'completed',
-            date: '2025-03-12',
-            pic: '/images/session1.jpg',
+            date: '3/12/2025',
+            pic: '/tattoos/1.jpg',
             id: 'sess_01a9f2k1',
-
         },
         {
             status: 'in progress',
-            date: '2025-03-20',
-            pic: '/images/session2.jpg',
+            date: '3/20/2025',
+            pic: '/tattoos/2.webp',
             id: 'sess_02b7e1m4',
         },
         {
             status: 'scheduled',
-            date: '2025-04-01',
-            pic: '/images/session3.jpg',
+            date: '4/1/2025',
+            pic: '/tattoos/3.webp',
             id: 'sess_03c4r9h8',
         },
         {
             status: 'completed',
-            date: '2025-04-10',
-            pic: '/images/session4.jpg',
+            date: '4/10/2025',
+            pic: '/tattoos/4.jpg',
             id: 'sess_04d3n7z2',
-
         },
         {
             status: 'cancelled',
-            date: '2025-04-18',
-            pic: '/images/session5.jpg',
+            date: '4/18/2025',
+            pic: '/tattoos/5.avif',
             id: 'sess_05e6w8k0',
         },
         {
             status: 'completed',
-            date: '2025-05-03',
-            pic: '/images/session6.jpg',
+            date: '5/3/2025',
+            pic: '/tattoos/6.png',
             id: 'sess_06f1x3v5',
-
         },
         {
             status: 'in progress',
-            date: '2025-05-11',
-            pic: '/images/session7.jpg',
+            date: '7/28/2025',
+            pic: '/tattoos/7.avif',
             id: 'sess_07g9y2j6',
         },
         {
             status: 'scheduled',
-            date: '2025-05-19',
-            pic: '/images/session8.jpg',
+            date: '7/27/2025',
+            pic: '/tattoos/8.jpg',
             id: 'sess_08h0z7l9',
         },
     ];
 
-    return sessions
-
-
+    return sessions;
 }
+
 
 type State = {
     message: string | null;

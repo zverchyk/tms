@@ -13,20 +13,8 @@
 
 }
 
-.header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
 
-    .icon {
-        font-size: 2rem;
-    }
 
-    h1 {
-        margin: 0;
-        font-size: 1.5rem;
-    }
-}
 
 .stats {
     display: flex;
@@ -43,7 +31,7 @@
 
 .sessionItem {
     display: flex;
-    gap: 1rem;
+
     align-items: flex-start;
     border: 1px solid #ddd;
     padding: 1rem;
@@ -79,6 +67,10 @@
     }
 }
 
+.sessionItemToday {
+    background-color: orange;
+}
+
 .mainButton {
     align-self: center;
     padding: 0.75rem 2rem;
@@ -106,7 +98,10 @@
 
 .days_between {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2px;
+    max-height: 27px; // cap height if needed
+    overflow: hidden;
     font-size: 12px;
 
 }

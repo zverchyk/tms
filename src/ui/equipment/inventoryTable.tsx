@@ -1,5 +1,6 @@
-import diamond from '@/public/icons/diamond.png';
+import diamond from '@/assets/icons/diamond.png';
 import Image from 'next/image';
+
 
 import styles from './inventoryTable.module.scss';
 
