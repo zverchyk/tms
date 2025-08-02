@@ -8,7 +8,7 @@ export default function ControlPanel() {
 
     const cardsInfo = [
         { icon: '👤', title: 'Account Info', link: '/account' },
-        { icon: '💵', title: 'Money', link: '/money' },
+        { icon: '✉️', title: 'Messages', link: '/messages' },
         { icon: '🛠️', title: 'Equipment', link: '/equipment' },
         { icon: '⚙️', title: 'Settings', link: '/settings' },
         { icon: '💵', title: 'Messages', link: '/messages' },
