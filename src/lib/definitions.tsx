@@ -24,10 +24,25 @@ export type NewItem = {
 
 }
 
-export type DialogInfo ={
+export type DialogInfo = {
     name: string;
-    id:string;
-    lastMessage:string;
+    id: string;
+    lastMessage: string;
     lastMessageDateAndTime: string;
-
+    status: 'request' | 'canceled' | 'done';
+    avatar?: string;
+    phone?: string;
+    email?: string;
+    location?: string;
+    joinDate?: string;
 }
+
+export type SessionData = {
+    id: string;
+    name: string;
+    startDate: string;
+    notes: string;
+    contactNumber: string;
+    contactEmail: string;
+    pic: string;
+  };

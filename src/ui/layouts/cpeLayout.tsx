@@ -1,17 +1,16 @@
 import { Header } from "../accessories/Accessories";
-export default function CpeLayout({
-  children, title
-}: {
+import styles from './cpeLayout.module.scss';
+
+interface CpeLayoutProps {
   children: React.ReactNode;
   title?: string;
-}) {
-  console.log(title)
-  return (
-      
-    <div>
-        {title &&<Header title={title}></Header>}
-        <main>{children}</main>
-        </div>
-  );
 }
 
+export default function CpeLayout({ children, title = 'Control Panel' }: CpeLayoutProps) {
+  return (
+    <div className={styles.cpeLayout}>
+      <Header title={title} />
+      <main>{children}</main>
+    </div>
+  );
+}

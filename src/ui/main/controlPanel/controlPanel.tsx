@@ -11,7 +11,7 @@ export default function ControlPanel() {
         { icon: '✉️', title: 'Messages', link: '/messages' },
         { icon: '🛠️', title: 'Equipment', link: '/equipment' },
         { icon: '⚙️', title: 'Settings', link: '/settings' },
-        { icon: '💵', title: 'Messages', link: '/messages' },
+        { icon: '💵', title: 'Money', link: '/money' },
 
     ]
     const [cards, setCards] = useState(cardsInfo)

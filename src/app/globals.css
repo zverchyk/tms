@@ -40,3 +40,8 @@ body {
     color-scheme: dark;
   }
 }
+
+
+.overflow-hidden{
+    overflow-y: hidden;
+}

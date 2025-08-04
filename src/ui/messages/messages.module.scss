@@ -1,0 +1,161 @@
+.messengerWrapper{
+  width: 100%;
+  height: 100%;
+}
+
+.messagesWrapper {
+  width: 100%;
+  margin: 0 auto;
+  height:100%;
+
+  box-shadow: 0 2px 12px #0001;
+  padding: 0 10px;
+
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.messagesList {
+  flex: 1;
+  overflow-y: auto;
+  background: #e5ddd5;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dialogLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.dialogItem {
+  display: flex;
+  align-items: center;
+  background: #f7f7f7;
+  border-radius: 8px;
+  padding: 12px 16px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  cursor: pointer;
+  transition: background 0.2s;
+  &:hover {
+    background: #e6e6e6;
+  }
+}
+
+.dialogIcon {
+  flex-shrink: 0;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialogContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.dialogHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.dialogName {
+  font-weight: bold;
+  font-size: 1.1em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dialogTime {
+  font-size: 0.9em;
+  color: #888;
+  margin-left: 12px;
+  white-space: nowrap;
+}
+
+.dialogLastMessage {
+  color: #444;
+  font-size: 1em;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.myMessage {
+  align-self: flex-end;
+  background: #007aff;
+  color: #fff;
+  border-radius: 18px 18px 4px 18px;
+  padding: 10px 16px;
+  font-size: 16px;
+  max-width: 75%;
+  box-shadow: 0 1px 2px #0001;
+  margin-bottom: 2px;
+}
+
+.otherMessage {
+  align-self: flex-start;
+  background: #f0f0f0;
+  color: #222;
+  border-radius: 18px 18px 18px 4px;
+  padding: 10px 16px;
+  font-size: 16px;
+  max-width: 75%;
+  box-shadow: 0 1px 2px #0001;
+  margin-bottom: 2px;
+}
+
+.inputBar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+}
+
+.inputBar input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+  margin-right: 8px;
+  background: #fff;
+  box-shadow: 0 1px 2px #0001;
+  caret-color: #007aff;
+  min-width: 0;
+}
+
+.inputBar button {
+  background: #007aff;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.inputBar button:disabled {
+  background: #b0c4de;
+  cursor: not-allowed;
+}
+
+.dialogWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}

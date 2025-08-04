@@ -7,88 +7,120 @@ export default function CreateForm() {
     const [fileUploaded, setFileUploaded] = useState(false);
 
     return (
-        <form className={styles.sessionForm}>
-            <h2>Create New Tattoo Session</h2>
+        <div className={styles.formContainer}>
+            <div className={styles.formCard}>
+                <div className={styles.formHeader}>
+                    <h2 className={styles.formTitle}>Create New Session</h2>
+                    <p className={styles.formSubtitle}>Fill out the details for your tattoo session</p>
+                </div>
 
-            <label>
-                <span>👤 Client Name:</span>
-                <input type="text" />
-            </label>
+                <form className={styles.sessionForm}>
+                    {/* Basic Information */}
+                    <div className={styles.formSection}>
+                        <h3 className={styles.sectionTitle}>Basic Information</h3>
+                        
+                        <div className={styles.inputGroup}>
+                            <label className={styles.inputLabel}>Client Name</label>
+                            <input type="text" className={styles.inputField} placeholder="Enter client name" />
+                        </div>
 
-            <label>
-                <span>📅 Date:</span>
-                <input type="date" />
-            </label>
+                        <div className={styles.inputRow}>
+                            <div className={styles.inputGroup}>
+                                <label className={styles.inputLabel}>Date</label>
+                                <input type="date" className={styles.inputField} />
+                            </div>
+                            <div className={styles.inputGroup}>
+                                <label className={styles.inputLabel}>Start Time</label>
+                                <input type="time" className={styles.inputField} />
+                            </div>
+                        </div>
+                    </div>
 
-            <label>
-                <span>⏰ Start Time:</span>
-                <input type="text" placeholder="11:00 AM" />
-            </label>
+                    {/* Session Details */}
+                    <div className={styles.formSection}>
+                        <h3 className={styles.sectionTitle}>Session Details</h3>
+                        
+                        <div className={styles.inputGroup}>
+                            <label className={styles.inputLabel}>Tattoo Type</label>
+                            <input list="tattooTypes" className={styles.inputField} placeholder="Select or type tattoo type" />
+                            <datalist id="tattooTypes">
+                                <option value="Blackwork" />
+                                <option value="Realism" />
+                                <option value="Japanese" />
+                                <option value="Lettering" />
+                                <option value="Traditional" />
+                            </datalist>
+                        </div>
 
-            <h3>Session Notes Template:</h3>
+                        <div className={styles.inputGroup}>
+                            <label className={styles.inputLabel}>Design/Style</label>
+                            <input type="text" className={styles.inputField} placeholder="Describe the design" />
+                        </div>
 
-            <label>
-                Tattoo Type:
+                        <div className={styles.inputGroup}>
+                            <label className={styles.inputLabel}>Placement</label>
+                            <input list="placements" className={styles.inputField} placeholder="Select or type placement" />
+                            <datalist id="placements">
+                                <option value="Arm" />
+                                <option value="Leg" />
+                                <option value="Back" />
+                                <option value="Chest" />
+                                <option value="Shoulder" />
+                            </datalist>
+                        </div>
 
-                <input list="tattooTypes" />
-                <datalist id="tattooTypes">
-                    <option value="Blackwork" />
-                    <option value="Realism" />
-                    <option value="Japanese" />
-                    <option value="Lettering" />
-                    <option value="Traditional" />
-                </datalist>
-            </label>
+                        <div className={styles.inputGroup}>
+                            <label className={styles.inputLabel}>Pricing (optional)</label>
+                            <input type="text" className={styles.inputField} placeholder="$0.00" />
+                        </div>
+                    </div>
 
-            <label>
-                Design/Style:
-                <input type="text" />
-            </label>
+                    {/* File Upload */}
+                    <div className={styles.formSection}>
+                        <h3 className={styles.sectionTitle}>Reference Image</h3>
+                        
+                        <div className={styles.fileUpload}>
+                            <input
+                                type="file"
+                                accept="image/png, image/jpeg"
+                                onChange={() => setFileUploaded(true)}
+                                className={styles.fileInput}
+                                id="fileUpload"
+                            />
+                            <label htmlFor="fileUpload" className={styles.fileLabel}>
+                                {fileUploaded ? (
+                                    <span className={styles.uploadSuccess}>✅ Image uploaded</span>
+                                ) : (
+                                    <span className={styles.uploadText}>Click to upload image</span>
+                                )}
+                            </label>
+                            <small className={styles.fileNote}>JPG, PNG files supported</small>
+                        </div>
+                    </div>
 
-            <label>
-                Placement:
-                <input list="tattooTypes" />
-                <datalist id="tattooTypes">
-                    <option value="Blackwork" />
-                    <option value="Realism" />
-                    <option value="Japanese" />
-                    <option value="Lettering" />
-                    <option value="Traditional" />
-                </datalist>
-            </label>
+                    {/* Options */}
+                    <div className={styles.formSection}>
+                        <div className={styles.checkboxGroup}>
+                            <input type="checkbox" id="reminder" className={styles.checkbox} />
+                            <label htmlFor="reminder" className={styles.checkboxLabel}>
+                                Add reminder 1 hour before session
+                            </label>
+                        </div>
+                    </div>
 
-            <label>
-                Pricing (optional):
-                <input type="text" />
-            </label>
-
-            <h3>🔄 Upload Flash Reference</h3>
-
-            <input
-                type="file"
-                accept="image/png, image/jpeg"
-                onChange={() => setFileUploaded(true)}
-            />
-            {fileUploaded && <span>✅ Uploaded</span>}
-
-            <small>(JPG, PNG; stored in Drive "TattooApp Flash")</small>
-
-
-            <label>
-                Add reminder 1 hour before
-                <input type="checkbox" />
-
-            </label>
-
-
-            <div className={styles.buttonGroup}>
-                <button type="submit" className={styles.submitBtn}>⬆ Create Session</button>
-                <Link href='/main'>
-                    <button type="button" className={styles.cancelBtn}>Cancel</button>
-                </Link>
-
+                    {/* Action Buttons */}
+                    <div className={styles.formActions}>
+                        <button type="submit" className={`${styles.actionButton} ${styles.primary}`}>
+                            Create Session
+                        </button>
+                        <Link href='/main' className={styles.buttonLink}>
+                            <button type="button" className={`${styles.actionButton} ${styles.secondary}`}>
+                                Cancel
+                            </button>
+                        </Link>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     );
-
 }

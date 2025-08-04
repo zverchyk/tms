@@ -4,20 +4,29 @@
     align-items: center;
     gap: 3rem;
     padding: 2rem;
-    background-color: #f7fbfd; // Assuming light background
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     scroll-behavior: smooth;
-    // overflow-y: scroll;
-    // scroll-snap-type: y mandatory;
-    // scroll-behavior: smooth;
-
-    // margin: 0;
-    // padding: 0;
-    // height: 100%;
+    position: relative;
+    
+    // Add animated background elements
+    &::before {
+        content: '';
+        position: fixed;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+        background-size: 50px 50px;
+        animation: backgroundMove 20s linear infinite;
+        z-index: 0;
+    }
 
     .section {
         scroll-snap-align: start;
         transition: all 0.3s ease-in-out;
-
+        position: relative;
+        z-index: 1;
     }
 
     .mainPage {
@@ -26,24 +35,42 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
+        position: relative;
+        z-index: 1;
     }
+}
 
     .halfRoundedButton {
-        background-color: #f1f7fb;
         font-size: 2rem;
         padding: 1rem 2rem;
         border-radius: 30%;
         border: none;
         cursor: pointer;
         width: 100vw;
-        background-color: #2e3031;
-        color: #dcd8d8;
-
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-        // transition: background 0.3s;
+        background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2);
+        color: #ffffff;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
 
         &:hover {
-            background-color: #464647;
+            background: linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.2) 100%);
+            transform: translateY(-2px);
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        &:active {
+            transform: translateY(0);
+            box-shadow: 
+                0 4px 16px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
     }
 
@@ -73,42 +100,109 @@
         font-size: 2rem;
         color: white;
         text-decoration: none;
-        background-color: #2e3031;
         text-align: center;
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+        box-shadow: 
+            0 10px 30px rgba(238, 90, 36, 0.4),
+            0 4px 15px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
 
+        // Add shine effect
+        &::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
 
         .icon {
             font-size: 3rem;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .label {
+            margin: 0.5rem 0 0 0;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         &:hover {
-            box-shadow: 0 10px 20px rgba(32, 30, 30, 0.671);
-            opacity: 0.8;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 15px 40px rgba(238, 90, 36, 0.5),
+                0 8px 25px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            
+            &::before {
+                opacity: 1;
+                transform: rotate(45deg) translate(50%, 50%);
+            }
         }
 
+        &:active {
+            transform: translateY(-1px) scale(1.01);
+            box-shadow: 
+                0 8px 20px rgba(238, 90, 36, 0.4),
+                0 4px 15px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
     }
 
 
-}
+
 
 .returnToMainButton {
-
     padding: 20px;
     position: fixed;
     right: 50px;
     bottom: 20px;
-    background-color: rgb(106, 102, 102);
-    opacity: 0.5;
+    background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    opacity: 0.7;
     color: white;
     z-index: -1;
     border-radius: 50%;
-
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
 
     &:hover {
         opacity: 1;
+        transform: translateY(-2px);
+        background: linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.2) 100%);
+        box-shadow: 
+            0 12px 35px rgba(0, 0, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    &:active {
+        transform: translateY(0);
     }
 }
 
 .showReturnbtn {
     z-index: 10;
+}
+
+// Add keyframe animation for background
+@keyframes backgroundMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
 }

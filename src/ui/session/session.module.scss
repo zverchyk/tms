@@ -1,74 +1,137 @@
-.card {
-    min-height: 100vh;
-    color: black;
-    border-radius: 12px;
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.sessionContainer {
+
+    padding: 1.5rem;
+    background: #f8fafc;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.sessionCard {
+
+    width: 100%;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
 }
 
-.imagePlaceholder {
-    background: #f5f9fc;
-    height: 150px;
-}
-
-.content {
-    padding: 1rem;
+.sessionHeader {
     display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-
-    h3 {
-        margin: 0;
-    }
+    padding: 2rem;
+    gap: 1.5rem;
+    border-bottom: 1px solid #f1f5f9;
 }
 
-.subtext {
+.imageContainer {
+    flex-shrink: 0;
+}
+
+.sessionImage {
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.headerInfo {
+    flex: 1;
+}
+
+.sessionName {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1e293b;
+    line-height: 1.2;
+}
+
+.sessionDate {
+    font-size: 0.875rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.sessionDetails {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.detailItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.detailLabel {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.detailValue {
     margin: 0;
-    color: #555;
+    color: #334155;
+    line-height: 1.5;
     font-size: 0.9rem;
 }
 
-.section {
-    h4 {
-        margin: 0;
-        font-weight: bold;
-    }
+.actionButtons {
+    padding: 1.5rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    border-top: 1px solid #f1f5f9;
+}
 
-    p {
-        margin: 0.25rem 0 0;
-        color: #777;
+.buttonLink {
+    text-decoration: none;
+}
+
+.actionButton {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:hover {
+        transform: translateY(-1px);
     }
 }
 
-
-.startButton {
-    padding: 0.75rem;
-    background: #2d3e78;
-
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 0.5rem;
+.primary {
+    background: #3b82f6;
+    color: white;
+    
+    &:hover {
+        background: #2563eb;
+    }
 }
 
-.menuButton {
-    padding: 0.75rem;
-    background: #f27f28;
+.secondary {
+    background: #64748b;
+    color: white;
+    
+    &:hover {
+        background: #475569;
+    }
+}
 
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 0.5rem;
+.outline {
+    background: transparent;
+    color: #64748b;
+    border: 1px solid #cbd5e1;
+    
+    &:hover {
+        background: #f8fafc;
+        border-color: #94a3b8;
+    }
 }

@@ -35,12 +35,51 @@ function checkLengthDaysBetween(input: number): number {
     return Math.min(input, 6);
 }
 
+function getStatusIcon(status: string): string {
+    switch (status.toLowerCase()) {
+        case 'completed': return '✅';
+        case 'in progress': return '🔄';
+        case 'scheduled': return '📅';
+        case 'cancelled': return '❌';
+        default: return '📝';
+    }
+}
 
+function getStatusClass(status: string): string {
+    switch (status.toLowerCase()) {
+        case 'completed': return 'statusCompleted';
+        case 'in progress': return 'statusInProgress';
+        case 'scheduled': return 'statusScheduled';
+        case 'cancelled': return 'statusCancelled';
+        default: return 'statusDefault';
+    }
+}
 
 export default function Sessions() {
     const [sessions, setSessions] = useState<Session[]>([]);
     const [daysBetween, setdaysBetween] = useState<number[]>([0])
     const today = new Date().toLocaleDateString()
+
+    // Count sessions by status
+    const getStatusCounts = () => {
+        const counts = {
+            completed: 0,
+            'in progress': 0,
+            scheduled: 0,
+            cancelled: 0
+        };
+        
+        sessions.forEach(session => {
+            const status = session.status.toLowerCase();
+            if (status in counts) {
+                counts[status as keyof typeof counts]++;
+            }
+        });
+        
+        return counts;
+    };
+
+    const statusCounts = getStatusCounts();
 
 
 
@@ -69,48 +108,76 @@ export default function Sessions() {
 
     return (
         <div className={styles.main}>
-            {/* today line */}
-
+            <div className={styles.header}>
+                <h2 className={styles.title}>Recent Sessions</h2>
+                <div className={styles.sessionStats}>
+                    <span className={styles.totalSessions}>{sessions.length} Sessions</span>
+                    <div className={styles.statusIndicators}>
+                        <div className={`${styles.statusIndicator} ${styles.completed}`}>
+                            <span className={styles.statusIcon}>✅</span>
+                            <span className={styles.statusCount}>{statusCounts.completed}</span>
+                        </div>
+                        <div className={`${styles.statusIndicator} ${styles.inProgress}`}>
+                            <span className={styles.statusIcon}>🔄</span>
+                            <span className={styles.statusCount}>{statusCounts['in progress']}</span>
+                        </div>
+                        <div className={`${styles.statusIndicator} ${styles.scheduled}`}>
+                            <span className={styles.statusIcon}>📅</span>
+                            <span className={styles.statusCount}>{statusCounts.scheduled}</span>
+                        </div>
+                        <div className={`${styles.statusIndicator} ${styles.cancelled}`}>
+                            <span className={styles.statusIcon}>❌</span>
+                            <span className={styles.statusCount}>{statusCounts.cancelled}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div className={styles.sessionBlock}>
                 {sessions.map((session, i) => (
-                    <div key={i}>
-                        <div className={styles.days_between}>
-                            <h1>{daysBetween[i] ? `${daysBetween[i]} days` : null}  </h1>
-                            {
-                                Array.from({ length: Number(checkLengthDaysBetween(daysBetween[i])) || 0 }).map((_, index) => (
-                                    <div key={index} className={styles.day_block}>
-
+                    <div key={session.id || i} className={styles.sessionGroup}>
+                        {daysBetween[i] > 0 && (
+                            <div className={styles.timeGap}>
+                                <div className={styles.gapLine}></div>
+                                <span className={styles.gapText}>{daysBetween[i]} days between</span>
+                                <div className={styles.gapLine}></div>
+                            </div>
+                        )}
+                        
+                        <Link 
+                            href={`/session/${session.id}`} 
+                            className={`${styles.sessionItem} ${styles[getStatusClass(session.status)]} ${session.date === today ? styles.sessionItemToday : ''}`}
+                        >
+                            <div className={styles.sessionContent}>
+                                <div className={styles.sessionImageContainer}>
+                                    <Image 
+                                        className={styles.sessionImage}
+                                        src={session.pic}
+                                        alt={`Session ${i + 1}`}
+                                        width={60}
+                                        height={60}
+                                    />
+                                    <div className={styles.statusOverlay}>
+                                        <span className={styles.statusIcon}>{getStatusIcon(session.status)}</span>
                                     </div>
-                                ))}
-
-
-                        </div>
-                        <Link href={`/session/${session.id}`} className={`${styles.sessionItem} ${session.date === today ? styles.sessionItemToday : ''}`}>
-
-                            <div className={styles.sessionIconInfo}>
-                                {/* <div className={styles.sessionIcon}>🖼️</div> */}
-                                <Image className={styles.sessionIcon}
-                                    src={session.pic}
-                                    alt={`Image ${i}`}
-                                    width={50}
-                                    height={50}
-                                ></Image>
-                                <div className={styles.sessionInfoBlock}>
-                                    <p>{session.status}</p>
+                                </div>
+                                
+                                <div className={styles.sessionInfo}>
+                                    <div className={styles.sessionHeader}>
+                                        <h4 className={styles.sessionTitle}>{session.id}</h4>
+                                        <span className={styles.sessionStatus}>{session.status}</span>
+                                    </div>
+                                    <p className={styles.sessionDate}>{formatDate(session.date)}</p>
                                 </div>
                             </div>
-                            <h3 className={styles.sessionDate}>{formatDate(session.date)}</h3>
-
+                            
+                            <div className={styles.sessionAction}>
+                                <span className={styles.chevron}>›</span>
+                            </div>
                         </Link>
-
                     </div>
-                )
-                )
-                }
+                ))}
             </div>
-
-
         </div>
     );
 }

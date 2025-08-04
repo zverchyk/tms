@@ -12,9 +12,6 @@ import { useEffect, useState, useRef, Suspense } from 'react';
 
 
 
-
-
-
 export default function Page() {
 
     // 
@@ -45,8 +42,10 @@ export default function Page() {
     // IT WAS LIKE THIS: const moveToSection = (section: React.RefObject<HTMLDivElement>, behavior: ScrollBehavior = 'smooth')
     // scroll method
     const moveToSection = (section: any, behavior: ScrollBehavior = 'smooth') => {
-        section.current?.scrollIntoView({ behavior });
-    };
+        if (!section || !section.current) return;
+        section.current.scrollIntoView({ behavior });
+      };
+      
     // need to put [] to make it work once. Show the middle section on page load
     useEffect(() => {
         moveToSection(middleRef, 'instant')
@@ -55,9 +54,19 @@ export default function Page() {
     // wheel scrolling handler
     useEffect(() => {
         const handleWheel = (e: WheelEvent) => {
+            // Eliminate wheel events outside threshold 0 < x < 2
+            if (Math.abs(e.deltaY) < 0.1 || Math.abs(e.deltaY) > 200) {
+                return; // Ignore very small or very large wheel events
+            }
+
             const section3Top = bottomRef.current?.offsetTop || 0;
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
+            console.log(currentIndex);
+            if (currentIndex >= sections.length || currentIndex <= 0) {
+                setCurrentIndex(1);
+                e.preventDefault();
+                return;
+            }
             if (currentIndex === 2) {
                 // Only jump to section 2 if scrolling up and window is at the very top of section 3
                 if (e.deltaY < 0 && Math.abs(scrollTop - section3Top) < 2) {
