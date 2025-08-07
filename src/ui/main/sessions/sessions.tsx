@@ -90,7 +90,7 @@ export default function Sessions() {
             const sortedData = sortByDateDescending([...data])
             setSessions(sortedData);
             let previousDate = '';
-            const allDaysBetween: number[] = sortedData.map((session, i) => {
+            const allDaysBetween: number[] = sortedData.map((session) => {
                 const days = previousDate
                     ? getDaysBetweenDates(previousDate, session.date)
                     : 0;

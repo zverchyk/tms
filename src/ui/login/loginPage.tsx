@@ -105,7 +105,7 @@ export default function LoginPage() {
 
                     {/* Sign Up Link */}
                     <div className={styles.signupPrompt}>
-                        <span>Don't have an account? </span>
+                        <span>Don&apos;t have an account? </span>
                         <Link href="/signup" className={styles.signupLink}>
                             Sign up
                         </Link>

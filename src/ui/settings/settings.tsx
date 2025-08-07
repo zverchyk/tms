@@ -206,7 +206,7 @@ export default function SettingsPage() {
                                         <span className={styles.checkboxCustom}></span>
                                         <div>
                                             <strong>Weekly reports</strong>
-                                            <p>Get a summary of your week's activities</p>
+                                            <p>Get a summary of your week&apos;s activities</p>
                                         </div>
                                     </label>
                                 </div>

@@ -4,7 +4,7 @@ import diamond from '@/assets/icons/diamond.png';
 import Image from 'next/image';
 import styles from './inventoryTable.module.scss';
 import { fetchFakeEquipment } from '@/lib/data';
-import { ProgressBar } from '../accessories/Accessories';
+// import { ProgressBar } from '../accessories/Accessories';
 import { EquipmentItem } from '../../lib/definitions';
 
 export default function InventoryTable() {
@@ -27,7 +27,7 @@ export default function InventoryTable() {
     }, []);
 
     useEffect(() => {
-        let filtered = equipmentData.filter(item => {
+        const filtered = equipmentData.filter(item => {
             const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                                 item.notes?.toLowerCase().includes(searchTerm.toLowerCase());
             const matchesCategory = selectedCategory === 'All' || item.category === selectedCategory;
@@ -36,8 +36,8 @@ export default function InventoryTable() {
 
         // Sort data
         filtered.sort((a, b) => {
-            let aValue: any = a[sortBy as keyof EquipmentItem];
-            let bValue: any = b[sortBy as keyof EquipmentItem];
+            let aValue: string | number | undefined = a[sortBy as keyof EquipmentItem];
+            let bValue: string | number | undefined = b[sortBy as keyof EquipmentItem];
             
             if (sortBy === 'cost') {
                 aValue = Number(aValue) || 0;
@@ -55,14 +55,14 @@ export default function InventoryTable() {
         setFilteredData(filtered);
     }, [equipmentData, searchTerm, selectedCategory, sortBy, sortOrder]);
 
-    const handleSort = (field: string) => {
-        if (sortBy === field) {
-            setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-        } else {
-            setSortBy(field);
-            setSortOrder('asc');
-        }
-    };
+    // const handleSort = (field: string) => {
+    //     if (sortBy === field) {
+    //         setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    //     } else {
+    //         setSortBy(field);
+    //         setSortOrder('asc');
+    //     }
+    // };
 
     const toggleItemSelection = (index: number) => {
         setSelectedItems(prev => 

@@ -1,6 +1,7 @@
-'use client';
 import SessionEdit from "@/ui/session/edit/edit";
 
-export default function EditPage(props: { params: { id: string } }) {
-  return <SessionEdit id={props.params.id} />
+export default async function EditPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
+  
+  return <SessionEdit id={params.id} />
 }

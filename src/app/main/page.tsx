@@ -14,8 +14,7 @@ import { useEffect, useState, useRef, Suspense } from 'react';
 
 export default function Page() {
 
-    // 
-    const [visible, setIsVisible] = useState(false)
+
     // sections
     const middleRef = useRef<HTMLDivElement>(null);
     const topRef = useRef<HTMLDivElement>(null);

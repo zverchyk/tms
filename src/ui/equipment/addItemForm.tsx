@@ -2,7 +2,7 @@
 
 import styles from './inventoryTable.module.scss';
 import { useState, useActionState, useEffect} from 'react';
-import { NewItem } from '@/lib/definitions';
+// import { NewItem } from '@/lib/definitions';
 import { uploadNewItem } from '@/lib/data';
 
 const initialState = { message: null };
@@ -146,7 +146,7 @@ export default function AddItemForm() {
                                 <div className={styles.formStep}>
                                     <div className={styles.stepHeader}>
                                         <h3>Choose Equipment Category</h3>
-                                        <p>Select the type of equipment you're adding</p>
+                                        <p>Select the type of equipment you&apos;re adding</p>
                                     </div>
                                     
                                     <div className={styles.categoryGrid}>

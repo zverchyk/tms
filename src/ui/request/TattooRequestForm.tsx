@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import styles from './tattooRequestForm.module.scss';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 interface TattooRequestFormProps {
   artistName: string;
@@ -257,7 +257,7 @@ export default function TattooRequestForm({ artistName }: TattooRequestFormProps
                 <option value="1-2 weeks">Within 1-2 weeks</option>
                 <option value="1 month">Within 1 month</option>
                 <option value="2-3 months">Within 2-3 months</option>
-                <option value="Flexible">I'm flexible</option>
+                <option value="Flexible">I&apos;m flexible</option>
               </select>
             </div>
           </div>
@@ -391,7 +391,7 @@ export default function TattooRequestForm({ artistName }: TattooRequestFormProps
             <h3 className={styles.sectionTitle}>Additional Notes</h3>
             
             <div className={styles.inputGroup}>
-              <label className={styles.inputLabel}>Anything else you'd like the artist to know?</label>
+              <label className={styles.inputLabel}>Anything else you&apos;d like the artist to know?</label>
               <textarea
                 name="additionalNotes"
                 value={formData.additionalNotes}

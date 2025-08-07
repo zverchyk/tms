@@ -1,6 +1,6 @@
 'use server'
 
-import { EquipmentItem, Session, NewItem, DialogInfo, SessionData} from '@/lib/definitions';
+import { EquipmentItem, Session, DialogInfo, SessionData} from '@/lib/definitions';
 
 
 const equipment = [

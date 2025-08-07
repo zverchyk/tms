@@ -173,7 +173,7 @@ export default function ClientFeedbackForm({ sessionId }: ClientFeedbackFormProp
                 <span className={styles.optionalTag}>Optional</span>
               </div>
               <p className={styles.sectionDescription}>
-                If you're happy with your experience, consider leaving a tip for your artist
+                If you&apos;re happy with your experience, consider leaving a tip for your artist
               </p>
               
               <div className={styles.tipOptions}>
@@ -251,7 +251,7 @@ export default function ClientFeedbackForm({ sessionId }: ClientFeedbackFormProp
                 <span className={styles.optionalTag}>Optional</span>
               </div>
               <p className={styles.sectionDescription}>
-                Share your thoughts, experience, or any additional feedback you'd like to provide
+                Share your thoughts, experience, or any additional feedback you&apos;d like to provide
               </p>
               
               <div className={styles.commentInputWrapper}>
