@@ -1,10 +1,11 @@
 import MessagesBlock from "@/ui/messages/MessagesBlock";
+import MessagesSkeleton from "@/ui/messages/MessagesSkeleton";
 import { Suspense } from "react";
 
 export default function MessagesPage(){
     return(
-        <div className="main">
+        <Suspense fallback={<MessagesSkeleton />}>
             <MessagesBlock></MessagesBlock>
-        </div>
+        </Suspense>
     )
 }

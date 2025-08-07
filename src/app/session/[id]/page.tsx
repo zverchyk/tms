@@ -1,6 +1,13 @@
-'use client';
 import Session from "@/ui/session/session";
+import SessionSkeleton from "@/ui/session/SessionSkeleton";
+import { Suspense } from "react";
 
-export default function SessionPage(props: { params: { id: string } }) {
-  return <Session id={props.params.id} />
+export default async function SessionPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
+  
+  return (
+    <Suspense fallback={<SessionSkeleton />}>
+      <Session id={params.id} />
+    </Suspense>
+  );
 }

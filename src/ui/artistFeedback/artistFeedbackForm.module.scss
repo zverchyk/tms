@@ -1,0 +1,551 @@
+// Main container
+.formContainer {
+  padding: 1.5rem;
+  background: #f8fafc;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.formCard {
+  width: 100%;
+  max-width: 900px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+// Header
+.formHeader {
+  padding: 2rem 2rem 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: white;
+}
+
+.formTitle {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+}
+
+.formSubtitle {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+}
+
+// Form
+.feedbackForm {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.formSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sectionTitle {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+.sectionDescription {
+  margin: 0 0 1rem 0;
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+// Input groups
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+// Input fields
+.selectField {
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  background: #ffffff;
+  color: #374151;
+  
+  &:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  }
+  
+  &:hover {
+    border-color: #9ca3af;
+  }
+}
+
+.textareaField {
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  background: #ffffff;
+  color: #374151;
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+  
+  &:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  }
+  
+  &::placeholder {
+    color: #9ca3af;
+  }
+}
+
+// Star Rating
+.ratingGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ratingLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.starRating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.star {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #d1d5db;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0.25rem;
+  
+  &:hover {
+    color: #fbbf24;
+    transform: scale(1.1);
+  }
+}
+
+.starActive {
+  color: #fbbf24;
+  
+  &:hover {
+    color: #f59e0b;
+  }
+}
+
+.ratingText {
+  margin-left: 0.5rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+// Equipment Categories
+.equipmentCategories {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.categorySection {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.categoryTitle {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.categoryIcon {
+  font-size: 1.2rem;
+}
+
+.equipmentOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.equipmentButton {
+  padding: 0.5rem 1rem;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: #4f46e5;
+    color: white;
+    border-color: #4f46e5;
+    transform: translateY(-1px);
+  }
+}
+
+// Used Equipment
+.usedEquipment {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 12px;
+}
+
+.usedEquipmentTitle {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0c4a6e;
+}
+
+.usageItem {
+  background: white;
+  border: 1px solid #e0f2fe;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.usageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.usageName {
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.9rem;
+}
+
+.removeButton {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ef4444;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+  
+  &:hover {
+    background: #dc2626;
+  }
+}
+
+.usageDetails {
+  display: flex;
+  gap: 1rem;
+  align-items: end;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+}
+
+.quantityInput,
+.notesInput {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  
+  label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+.quantityInput {
+  flex: 0 0 120px;
+}
+
+.notesInput {
+  flex: 1;
+}
+
+.quantityField,
+.notesField {
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  
+  &:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+  }
+}
+
+.quantityField {
+  text-align: center;
+}
+
+// File upload
+.fileUpload {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fileInput {
+  display: none;
+}
+
+.fileLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border: 2px dashed #d1d5db;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #f9fafb;
+  gap: 0.5rem;
+  
+  &:hover {
+    border-color: #4f46e5;
+    background: #f0f4ff;
+  }
+  
+  svg {
+    color: #4f46e5;
+    margin-bottom: 0.5rem;
+  }
+  
+  span {
+    font-weight: 600;
+    color: #374151;
+  }
+  
+  small {
+    color: #6b7280;
+    font-size: 0.8rem;
+  }
+}
+
+// Image preview
+.imagePreview {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.imageItem {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f3f4f6;
+  max-width: 300px;
+  width: 100%;
+}
+
+.previewImage {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+// Submit section
+.submitSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.submitButton {
+  width: 100%;
+  max-width: 400px;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+  }
+  
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+.submitNote {
+  margin: 0;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  max-width: 500px;
+}
+
+// Spinner animation
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .formContainer {
+    padding: 1rem;
+  }
+  
+  .formCard {
+    border-radius: 12px;
+  }
+  
+  .formHeader {
+    padding: 1.5rem;
+  }
+  
+  .formTitle {
+    font-size: 1.5rem;
+  }
+  
+  .feedbackForm {
+    padding: 1.5rem;
+    gap: 2rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.1rem;
+  }
+  
+  .categorySection {
+    padding: 1rem;
+  }
+  
+  .equipmentOptions {
+    gap: 0.375rem;
+  }
+  
+  .equipmentButton {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  
+  .star {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .formContainer {
+    padding: 0.5rem;
+  }
+  
+  .formHeader {
+    padding: 1rem;
+  }
+  
+  .feedbackForm {
+    padding: 1rem;
+  }
+  
+  .formTitle {
+    font-size: 1.25rem;
+  }
+  
+  .submitButton {
+    font-size: 0.9rem;
+    padding: 0.875rem 1.5rem;
+  }
+  
+  .usageDetails {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .quantityInput {
+    flex: none;
+  }
+}

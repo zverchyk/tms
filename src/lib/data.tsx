@@ -213,7 +213,8 @@ export async function loadAllDialogs():Promise<DialogInfo[]>{
     joinDate: "January 2024",
   },
 ];
-return data
+const waitedData = await wait(1000).then(()=>data)
+return waitedData
 }
 
 function wait(ms: number) {
