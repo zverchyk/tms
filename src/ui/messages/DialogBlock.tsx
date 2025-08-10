@@ -1,19 +1,12 @@
+// app/messages/[id]/DialogBlockClient.tsx
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './dialogBlock.module.scss';
+import { MessageInfo } from '@/lib/definitions';
 
-const initialMessages = [
-  { id: 1, text: 'Hey! How are you?', sender: 'other', timestamp: new Date(Date.now() - 1000 * 60 * 10) },
-  { id: 2, text: "I'm good, thanks! How about you?", sender: 'me', timestamp: new Date(Date.now() - 1000 * 60 * 8) },
-  { id: 3, text: 'Doing well! Working on a new tattoo design.', sender: 'other', timestamp: new Date(Date.now() - 1000 * 60 * 5) },
-  { id: 4, text: 'That sounds amazing! Can you show me?', sender: 'me', timestamp: new Date(Date.now() - 1000 * 60 * 3) },
-  { id: 5, text: 'Sure! Let me send some sketches', sender: 'other', timestamp: new Date(Date.now() - 1000 * 60 * 2) },
-  { id: 6, text: 'Looking forward to it! 🚀', sender: 'me', timestamp: new Date(Date.now() - 1000 * 60 * 1) },
-];
-
-export default function DialogBlock({ id }: { id: string }) {
-  const [messages, setMessages] = useState(initialMessages);
+export default function DialogBlockClient({ initialMessages }: { initialMessages: MessageInfo[] }) {
+  const [messages, setMessages] = useState<MessageInfo[]>(initialMessages);
   const [input, setInput] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -22,14 +15,15 @@ export default function DialogBlock({ id }: { id: string }) {
   }, [messages]);
 
   const sendMessage = () => {
-    if (input.trim() === '') return;
-    const newMessage = {
+    const text = input.trim();
+    if (!text) return;
+    const newMessage: MessageInfo = {
       id: Date.now(),
-      text: input.trim(),
-      sender: 'me' as const,
-      timestamp: new Date()
+      text,
+      sender: 'me',
+      timestamp: new Date(),
     };
-    setMessages(prev => [...prev, newMessage]);
+    setMessages((prev) => [...prev, newMessage]);
     setInput('');
   };
 
@@ -40,36 +34,21 @@ export default function DialogBlock({ id }: { id: string }) {
     }
   };
 
-  const formatTime = (timestamp: Date) => {
-    return timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  };
+  const formatTime = (ts: Date) =>
+    new Date(ts).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
   return (
     <div className={styles.dialogContainer}>
-      {/* Messages Area - Scrollable */}
       <div className={styles.messagesArea}>
         <div className={styles.messagesList}>
-          {messages.map((msg, index) => {
-            const showTime = index === 0 || 
-              Math.abs(msg.timestamp.getTime() - messages[index - 1].timestamp.getTime()) > 5 * 60 * 1000;
-            
+          {messages.map((msg, i) => {
+            const prev = messages[i - 1];
+            const showTime = i === 0 || Math.abs(+msg.timestamp - +(prev?.timestamp ?? 0)) > 5 * 60 * 1000;
             return (
               <div key={msg.id}>
-                {showTime && (
-                  <div className={styles.timestamp}>
-                    {formatTime(msg.timestamp)}
-                  </div>
-                )}
-                <div
-                  className={`${styles.messageWrapper} ${
-                    msg.sender === 'me' ? styles.myMessageWrapper : styles.otherMessageWrapper
-                  }`}
-                >
-                  <div
-                    className={`${styles.message} ${
-                      msg.sender === 'me' ? styles.myMessage : styles.otherMessage
-                    }`}
-                  >
+                {showTime && <div className={styles.timestamp}>{formatTime(msg.timestamp)}</div>}
+                <div className={`${styles.messageWrapper} ${msg.sender === 'me' ? styles.myMessageWrapper : styles.otherMessageWrapper}`}>
+                  <div className={`${styles.message} ${msg.sender === 'me' ? styles.myMessage : styles.otherMessage}`}>
                     {msg.text}
                   </div>
                 </div>
@@ -80,25 +59,18 @@ export default function DialogBlock({ id }: { id: string }) {
         </div>
       </div>
 
-      {/* Input Bar - Fixed */}
       <div className={styles.inputContainer}>
         <div className={styles.inputBar}>
           <input
             type="text"
             value={input}
-            onChange={e => setInput(e.target.value)}
+            onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyPress}
             placeholder="Type a message..."
             className={styles.messageInput}
           />
-          <button
-            onClick={sendMessage}
-            disabled={!input.trim()}
-            className={styles.sendButton}
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-            </svg>
+          <button onClick={sendMessage} disabled={!input.trim()} className={styles.sendButton}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
           </button>
         </div>
       </div>

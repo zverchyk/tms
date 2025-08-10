@@ -31,9 +31,6 @@ function sortByDateDescending<T extends { date: string }>(data: T[]): T[] {
     return data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
-function checkLengthDaysBetween(input: number): number {
-    return Math.min(input, 6);
-}
 
 function getStatusIcon(status: string): string {
     switch (status.toLowerCase()) {

@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import styles from './tattooRequestForm.module.scss';
-// import Image from 'next/image';
+import Image from 'next/image';
 
 interface TattooRequestFormProps {
   artistName: string;
@@ -291,11 +291,13 @@ export default function TattooRequestForm({ artistName }: TattooRequestFormProps
               <div className={styles.imagePreview}>
                 {referenceImages.map((file, index) => (
                   <div key={index} className={styles.imageItem}>
-                    <img 
+                    <Image 
                       src={URL.createObjectURL(file)} 
                       alt={`Reference ${index + 1}`}
                       className={styles.previewImage}
-                    />
+                      width={100}
+                      height={100}
+                    />  
                     <button
                       type="button"
                       onClick={() => removeReferenceImage(index)}
@@ -336,7 +338,7 @@ export default function TattooRequestForm({ artistName }: TattooRequestFormProps
             {bodyPartImage && (
               <div className={styles.imagePreview}>
                 <div className={styles.imageItem}>
-                  <img 
+                  <Image 
                     src={URL.createObjectURL(bodyPartImage)} 
                     alt="Body part"
                     className={styles.previewImage}

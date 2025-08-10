@@ -15,7 +15,7 @@ export default function SettingsPage() {
         clearCache: false
     });
 
-    const handleInputChange = (key: string, value: any) => {
+    const handleInputChange = (key: string, value: string | boolean) => {
         setFormData(prev => ({ ...prev, [key]: value }));
     };
 

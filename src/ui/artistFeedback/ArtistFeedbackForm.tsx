@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import styles from './artistFeedbackForm.module.scss';
+import Image from 'next/image';
 
 interface ArtistFeedbackFormProps {
   sessionId: string;
@@ -45,13 +46,13 @@ export default function ArtistFeedbackForm({ sessionId }: ArtistFeedbackFormProp
   const [tattooPhoto, setTattooPhoto] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  //   const { name, value } = e.target;
+  //   setFormData(prev => ({
+  //     ...prev,
+  //     [name]: value
+  //   }));
+  // };
 
   const handleRatingChange = (field: 'sessionRating' | 'clientSatisfaction', rating: number) => {
     setFormData(prev => ({
@@ -157,66 +158,7 @@ export default function ArtistFeedbackForm({ sessionId }: ArtistFeedbackFormProp
             />
           </div>
 
-          {/* Session Details */}
-          {/* <div className={styles.formSection}>
-            <h3 className={styles.sectionTitle}>Session Details</h3>
-            
-            <div className={styles.inputGroup}>
-              <label className={styles.inputLabel}>Session Duration</label>
-              <select
-                name="sessionDuration"
-                value={formData.sessionDuration}
-                onChange={handleInputChange}
-                className={styles.selectField}
-                required
-              >
-                <option value="">Select duration</option>
-                <option value="1 hour">1 hour</option>
-                <option value="2 hours">2 hours</option>
-                <option value="3 hours">3 hours</option>
-                <option value="4 hours">4 hours</option>
-                <option value="5 hours">5 hours</option>
-                <option value="6+ hours">6+ hours</option>
-              </select>
-            </div>
-
-            <div className={styles.inputGroup}>
-              <label className={styles.inputLabel}>Session Notes</label>
-              <textarea
-                name="sessionNotes"
-                value={formData.sessionNotes}
-                onChange={handleInputChange}
-                className={styles.textareaField}
-                placeholder="Describe the session, technique used, client behavior, etc."
-                rows={4}
-              />
-            </div>
-
-            <div className={styles.inputGroup}>
-              <label className={styles.inputLabel}>Challenges Encountered</label>
-              <textarea
-                name="challenges"
-                value={formData.challenges}
-                onChange={handleInputChange}
-                className={styles.textareaField}
-                placeholder="Any difficulties, unexpected issues, or complications..."
-                rows={3}
-              />
-            </div>
-
-            <div className={styles.inputGroup}>
-              <label className={styles.inputLabel}>Areas for Improvement</label>
-              <textarea
-                name="improvements"
-                value={formData.improvements}
-                onChange={handleInputChange}
-                className={styles.textareaField}
-                placeholder="What could be done better next time?"
-                rows={3}
-              />
-            </div>
-          </div> */}
-
+    
           {/* Equipment Usage */}
           <div className={styles.formSection}>
             <h3 className={styles.sectionTitle}>Equipment Used</h3>
@@ -325,10 +267,12 @@ export default function ArtistFeedbackForm({ sessionId }: ArtistFeedbackFormProp
             {tattooPhoto && (
               <div className={styles.imagePreview}>
                 <div className={styles.imageItem}>
-                  <img 
+                  <Image 
                     src={URL.createObjectURL(tattooPhoto)} 
                     alt="Completed tattoo"
                     className={styles.previewImage}
+                    width={100}
+                    height={100}
                   />
                   <button
                     type="button"

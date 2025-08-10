@@ -1,6 +1,6 @@
 'use server'
 
-import { EquipmentItem, Session, DialogInfo, SessionData} from '@/lib/definitions';
+import { EquipmentItem, Session, DialogInfo, SessionData, MessageInfo } from '@/lib/definitions';
 
 
 const equipment = [
@@ -303,4 +303,21 @@ export async function fetchSessionById(id: string): Promise<SessionData | undefi
 
   const data = await wait(1000).then(() => fakeSessions);
   return data.find(session => session.id === id);
+}
+
+
+
+export async function fetchFakeMessages(id:string):Promise<MessageInfo[]>{
+  if(id === undefined) return []
+  const initialMessages:MessageInfo[] = [
+    { id: 1, text: 'Hey! How are you?', sender: 'other', timestamp: new Date(Date.now() - 1000 * 60 * 10) },
+    { id: 2, text: "I'm good, thanks! How about you?", sender: 'me', timestamp: new Date(Date.now() - 1000 * 60 * 8) },
+    { id: 3, text: 'Doing well! Working on a new tattoo design.', sender: 'other', timestamp: new Date(Date.now() - 1000 * 60 * 5) },
+    { id: 4, text: 'That sounds amazing! Can you show me?', sender: 'me', timestamp: new Date(Date.now() - 1000 * 60 * 3) },
+    { id: 5, text: 'Sure! Let me send some sketches', sender: 'other', timestamp: new Date(Date.now() - 1000 * 60 * 2) },
+    { id: 6, text: 'Looking forward to it! 🚀', sender: 'me', timestamp: new Date(Date.now() - 1000 * 60 * 1) },
+  ];
+  
+  const data = await wait(1000).then(() => initialMessages);
+  return data
 }

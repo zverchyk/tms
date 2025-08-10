@@ -16,9 +16,9 @@ export default function Page() {
 
 
     // sections
-    const middleRef = useRef<HTMLDivElement>(null);
-    const topRef = useRef<HTMLDivElement>(null);
-    const bottomRef = useRef<HTMLDivElement>(null);
+    const middleRef = useRef<HTMLDivElement | null>(null);
+    const topRef = useRef<HTMLDivElement | null>(null);
+    const bottomRef = useRef<HTMLDivElement | null>(null);
 
 
 
@@ -28,23 +28,25 @@ export default function Page() {
     const [showReturn, setShowReturn] = useState(false);
 
     // BTN method
-    const jumpToSection = (section: any, behavior: string) => {
-        section.current?.scrollIntoView({ behavior: behavior });
-        section === topRef ? setCurrentIndex(0) : setCurrentIndex(2)
-
-
-    };
-
-    // SCROLL WIPER
-
-
-    // IT WAS LIKE THIS: const moveToSection = (section: React.RefObject<HTMLDivElement>, behavior: ScrollBehavior = 'smooth')
-    // scroll method
-    const moveToSection = (section: any, behavior: ScrollBehavior = 'smooth') => {
+    const jumpToSection = (
+        section: React.RefObject<HTMLDivElement | null>,
+        behavior: ScrollBehavior
+    ) => {
         if (!section || !section.current) return;
         section.current.scrollIntoView({ behavior });
-      };
-      
+        const index = section === topRef ? 0 : 2;
+        setCurrentIndex(index);
+    };
+
+
+    // SCROLL WIPER
+    // IT WAS LIKE THIS: const moveToSection = (section: React.RefObject<HTMLDivElement>, behavior: ScrollBehavior = 'smooth')
+    // scroll method
+    const moveToSection = (section: React.RefObject<HTMLDivElement | null>, behavior: ScrollBehavior = 'smooth') => {
+        if (!section || !section.current) return;
+        section.current.scrollIntoView({ behavior });
+    };
+
     // need to put [] to make it work once. Show the middle section on page load
     useEffect(() => {
         moveToSection(middleRef, 'instant')
@@ -88,7 +90,7 @@ export default function Page() {
 
         window.addEventListener('wheel', handleWheel, { passive: false });
         return () => window.removeEventListener('wheel', handleWheel);
-    }, [currentIndex]);
+    }, [currentIndex, sections.length]);
 
     // first load handler
     useEffect(() => {
@@ -96,7 +98,7 @@ export default function Page() {
         moveToSection(sections[currentIndex]);
 
 
-    }, [currentIndex]);
+    }, [currentIndex , sections]);
 
     // return to main section button analyzer
     useEffect(() => {
@@ -109,9 +111,7 @@ export default function Page() {
 
         if (middleRef.current) {
             observer.observe(middleRef.current);
-
         }
-
         return () => {
             if (middleRef.current) {
                 observer.unobserve(middleRef.current);

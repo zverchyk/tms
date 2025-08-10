@@ -30,12 +30,12 @@ export default function MessagesLayout({ children }: MessagesLayoutProps) {
     }
   }, [pathname]);
 
-  const getTitle = () => {
-    if (currentUser) {
-      return currentUser.name;
-    }
-    return 'Messages';
-  };
+  // const getTitle = () => {
+  //   if (currentUser) {
+  //     return currentUser.name;
+  //   }
+  //   return 'Messages';
+  // };
 
   const isMessageDetail = pathname.match(/\/messages\/\w+/);
 

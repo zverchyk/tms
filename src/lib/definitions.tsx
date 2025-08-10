@@ -46,3 +46,11 @@ export type SessionData = {
     contactEmail: string;
     pic: string;
   };
+
+
+  export type MessageInfo = {
+    id: number;
+    text: string;
+    sender: 'me' | 'other';
+    timestamp: Date;
+  };
