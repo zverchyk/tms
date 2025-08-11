@@ -56,14 +56,14 @@ export default function LoginPage() {
                     </button>
 
                     {/* Divider */}
-                    <div className={styles.divider}>
+                    {/* <div className={styles.divider}>
                         <span className={styles.dividerLine}></span>
                         <span className={styles.dividerText}>or</span>
                         <span className={styles.dividerLine}></span>
-                    </div>
+                    </div> */}
 
                     {/* Email Login Form */}
-                    <form onSubmit={handleEmailLogin} className={styles.emailForm}>
+                    {/* <form onSubmit={handleEmailLogin} className={styles.emailForm}>
                         <div className={styles.inputGroup}>
                             <label className={styles.inputLabel}>Email</label>
                             <input 
@@ -101,7 +101,7 @@ export default function LoginPage() {
                         >
                             {isLoading ? 'Signing in...' : 'Sign In'}
                         </button>
-                    </form>
+                    </form> */}
 
                     {/* Sign Up Link */}
                     <div className={styles.signupPrompt}>
